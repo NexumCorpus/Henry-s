@@ -1,0 +1,63 @@
+# Vercel ignore file - exclude these from deployment
+
+# Backend files (deployed separately)
+backend/
+database/
+ml/
+mobile/
+
+# Development files
+.git/
+.vscode/
+.vs/
+node_modules/
+*.log
+.env.local
+.env.development
+
+# Build artifacts
+dist/
+build/
+.next/
+
+# Testing
+coverage/
+.nyc_output/
+test-results/
+
+# Documentation (not needed for deployment)
+*.md
+!README.md
+
+# Docker files (not needed for Vercel)
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Deployment scripts for other platforms
+deploy.sh
+deploy.bat
+backup.sh
+monitor.sh
+
+# IDE files
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,17 @@
+# Vercel redirects and rewrites for Henry's SmartStock AI
+
+# SPA routing - redirect all routes to index.html for client-side routing
+/*    /index.html   200
+
+# API proxy rules (handled by vercel.json, but backup here)
+/api/*  https://your-backend-domain.com/api/:splat  200
+/ws     https://your-backend-domain.com/ws          200
+
+# Security redirects
+/admin/*  /login  302
+/.env*    /404    404
+/config*  /404    404
+
+# SEO redirects (if needed)
+/home     /        301
+/dashboard /       301

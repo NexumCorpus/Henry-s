@@ -63,33 +63,47 @@ echo "⚙️  Configuring Vercel environment variables..."
 
 # Check if this is the first deployment
 if [ ! -f ".vercel/project.json" ]; then
-    echo "🆕 First time deployment - setting up Vercel project..."
+    echo "🆕 First time deployment - running Vercel setup..."
     
-    # Link to Vercel project (will prompt for project setup)
-    vercel link
-    
-    # Set environment variables
-    echo "📝 Setting up environment variables..."
-    vercel env add VITE_API_BASE_URL production
-    vercel env add VITE_WS_URL production
-    vercel env add VITE_ENVIRONMENT production
-    
-    echo "ℹ️  Please enter your environment variables when prompted:"
-    echo "   VITE_API_BASE_URL: https://your-backend-domain.com/api/v1"
-    echo "   VITE_WS_URL: wss://your-backend-domain.com/ws"
-    echo "   VITE_ENVIRONMENT: production"
+    # Run the setup script
+    ../vercel-setup.sh
+else
+    echo "ℹ️  Vercel project already configured"
 fi
+
+# Use Vercel-optimized configurations if available
+if [ -f "package.json.vercel" ]; then
+    echo "📦 Using Vercel-optimized package.json..."
+    cp package.json.vercel package.json
+fi
+
+if [ -f "vite.config.vercel.ts" ]; then
+    echo "⚙️  Using Vercel-optimized Vite config..."
+    cp vite.config.vercel.ts vite.config.ts
+fi
+
+# Install dependencies and build
+echo "📦 Installing dependencies..."
+npm ci
+
+echo "🏗️  Testing build..."
+npm run build
 
 # Deploy to Vercel
 echo "🚀 Deploying frontend to Vercel..."
 if [ "$ENVIRONMENT" = "production" ]; then
-    vercel --prod
+    vercel --prod --yes
 else
-    vercel
+    vercel --yes
 fi
 
 # Get deployment URL
 DEPLOYMENT_URL=$(vercel ls | grep "henrys-smartstock" | head -1 | awk '{print $2}')
+
+# Update CORS settings
+echo "🔧 Updating backend CORS settings..."
+cd ..
+./update-cors.sh
 
 echo "🎉 Deployment completed successfully!"
 echo ""

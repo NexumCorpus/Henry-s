@@ -86,9 +86,11 @@ docker-compose exec backend alembic upgrade head
 
 - 📖 **[Quick Start Guide](QUICK_START_GUIDE.md)** - Get up and running in 15 minutes
 - 🚀 **[Deployment Guide](DEPLOYMENT_GUIDE.md)** - Complete production deployment
-- 🌐 **[Vercel Deployment](VERCEL_DEPLOYMENT_GUIDE.md)** - Deploy frontend to global CDN
+- 🌐 **[Vercel Complete Setup](VERCEL_COMPLETE_SETUP.md)** - 15-minute Vercel deployment ⭐
+- 🔧 **[Vercel Troubleshooting](VERCEL_TROUBLESHOOTING.md)** - Fix common Vercel issues
 - 🎬 **[Demo Script](DEMO_SCRIPT.md)** - Show the system to your team
 - ✅ **[Production Checklist](PRODUCTION_CHECKLIST.md)** - Ensure you're ready to go live
+- 📊 **[Deployment Comparison](DEPLOYMENT_COMPARISON.md)** - Choose the best option
 - 🔧 **[Frontend Implementation](frontend/INVENTORY_DASHBOARD_README.md)** - Technical details
 
 ## 📈 **What's Next? (Post-MVP Roadmap)**
@@ -123,10 +125,15 @@ Henry's SmartStock AI MVP is ready to deploy today. In just a few hours, you can
 ```bash
 git clone https://github.com/your-repo/henrys-smartstock-ai.git
 cd henrys-smartstock-ai
-./deploy-vercel.sh production  # Vercel + VPS (recommended)
-# or
-./deploy.sh production         # All-in-one Docker
+
+# ⭐ Recommended: 15-minute Vercel deployment
+./deploy-vercel.sh production
+
+# Alternative: All-in-one Docker deployment  
+./deploy.sh production
 ```
+
+**📖 Complete setup guide**: [VERCEL_COMPLETE_SETUP.md](VERCEL_COMPLETE_SETUP.md)
 
 ---
 
