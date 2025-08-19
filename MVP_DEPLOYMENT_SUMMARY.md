@@ -8,9 +8,32 @@ The Henry's SmartStock AI MVP is **fully prepared for deployment** with all core
 
 ## 🚀 **Deployment Options**
 
-### **Option 1: Docker Compose Deployment (Recommended for MVP)**
+### **Option 1: Vercel + VPS Backend (Recommended for MVP)**
 
-**Best for**: Quick deployment, small to medium scale, cost-effective
+**Best for**: Fast global frontend + controlled backend, cost-effective, professional
+
+**What it includes**:
+- **Frontend**: Deployed to Vercel's global CDN (lightning fast)
+- **Backend**: Docker containers on your VPS (full control)
+- **Database & Cache**: PostgreSQL + Redis on VPS
+- **Automatic HTTPS**: SSL certificates managed by Vercel
+- **Global Performance**: CDN edge locations worldwide
+
+**Deployment command**:
+```bash
+./deploy-vercel.sh production
+```
+
+**Cost**: $40/month (Vercel free + $40 VPS)
+**Performance**: Excellent (global CDN)
+**Complexity**: Low
+**Maintenance**: Minimal
+
+---
+
+### **Option 2: Docker Compose Deployment (All-in-One)**
+
+**Best for**: Complete control, single server deployment, simple setup
 
 **What it includes**:
 - All services in containers (Frontend, Backend, Database, Cache)
@@ -31,7 +54,7 @@ deploy.bat production   # Windows
 
 ---
 
-### **Option 2: Cloud Platform Deployment**
+### **Option 3: Cloud Platform Deployment**
 
 **Best for**: Scalability, high availability, professional environments
 
@@ -58,7 +81,7 @@ deploy.bat production   # Windows
 
 ---
 
-### **Option 3: VPS/Dedicated Server Deployment**
+### **Option 4: VPS/Dedicated Server Deployment**
 
 **Best for**: Full control, predictable costs, custom configurations
 
@@ -287,32 +310,32 @@ SMTP_PASSWORD=your_app_password
 
 ### **For Henry's on Market (Single Location)**
 
-**Recommended Approach**: Docker Compose Deployment
+**Recommended Approach**: Vercel + VPS Backend
 
 **Steps**:
-1. **Server Setup** (30 minutes)
+1. **Backend Server Setup** (20 minutes)
    - Rent VPS (DigitalOcean $40/month droplet)
-   - Install Ubuntu 22.04 LTS
-   - Configure firewall and security
+   - Install Docker and configure backend services
+   - Set up database and cache
 
-2. **Application Deployment** (15 minutes)
-   - Clone repository
+2. **Frontend Deployment** (10 minutes)
+   - Deploy to Vercel with one command
+   - Automatic HTTPS and global CDN
+   - Custom domain setup (optional)
+
+3. **Configuration** (10 minutes)
+   - Update CORS settings for Vercel domain
    - Configure environment variables
-   - Run deployment script
-   - Verify all services
-
-3. **SSL & Domain Setup** (30 minutes)
-   - Point domain to server IP
-   - Install Let's Encrypt certificate
-   - Configure HTTPS redirect
+   - Test full application flow
 
 4. **Staff Training** (2 hours)
    - Admin training session
    - Staff onboarding
    - Create user accounts
 
-**Total Time**: ~3 hours
-**Monthly Cost**: ~$40-60 (server + domain)
+**Total Time**: ~2.5 hours
+**Monthly Cost**: ~$40 (free Vercel + $40 VPS)
+**Performance**: Excellent (global CDN)
 
 ### **Quick Start Commands**
 ```bash
@@ -322,16 +345,16 @@ curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
 curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
-# 2. Application deployment
+# 2. Vercel + Backend deployment
 git clone https://github.com/your-repo/henrys-smartstock-ai.git
 cd henrys-smartstock-ai
 cp .env.production .env
 nano .env  # Configure your settings
-./deploy.sh production
+./deploy-vercel.sh production
 
 # 3. Verify deployment
-curl http://localhost:80/health
-curl http://localhost:8000/health
+curl http://localhost:8000/health  # Backend
+# Frontend automatically available at https://your-app.vercel.app
 ```
 
 ---

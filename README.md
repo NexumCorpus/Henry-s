@@ -35,7 +35,7 @@ Henry's SmartStock AI MVP provides real-time inventory management with the core 
 
 ## 🚀 **Quick Start**
 
-### **Option 1: Production Deployment (Recommended)**
+### **Option 1: Vercel + Backend Deployment (Recommended)**
 
 ```bash
 # 1. Clone repository
@@ -46,11 +46,19 @@ cd henrys-smartstock-ai
 cp .env.production .env
 nano .env  # Add your secure passwords and settings
 
-# 3. Deploy with one command
-./deploy.sh production
-# or on Windows: deploy.bat production
+# 3. Deploy with one command (frontend to Vercel + backend to VPS)
+./deploy-vercel.sh production
 
 # 4. Access your system
+# Frontend: https://henrys-smartstock-ai.vercel.app (global CDN)
+# Backend: http://your-server:8000/docs
+```
+
+### **Option 2: All-in-One Docker Deployment**
+
+```bash
+# Deploy everything to single server
+./deploy.sh production
 # Frontend: http://localhost:80
 # Backend: http://localhost:8000/docs
 ```
@@ -78,6 +86,7 @@ docker-compose exec backend alembic upgrade head
 
 - 📖 **[Quick Start Guide](QUICK_START_GUIDE.md)** - Get up and running in 15 minutes
 - 🚀 **[Deployment Guide](DEPLOYMENT_GUIDE.md)** - Complete production deployment
+- 🌐 **[Vercel Deployment](VERCEL_DEPLOYMENT_GUIDE.md)** - Deploy frontend to global CDN
 - 🎬 **[Demo Script](DEMO_SCRIPT.md)** - Show the system to your team
 - ✅ **[Production Checklist](PRODUCTION_CHECKLIST.md)** - Ensure you're ready to go live
 - 🔧 **[Frontend Implementation](frontend/INVENTORY_DASHBOARD_README.md)** - Technical details
@@ -114,7 +123,9 @@ Henry's SmartStock AI MVP is ready to deploy today. In just a few hours, you can
 ```bash
 git clone https://github.com/your-repo/henrys-smartstock-ai.git
 cd henrys-smartstock-ai
-./deploy.sh production
+./deploy-vercel.sh production  # Vercel + VPS (recommended)
+# or
+./deploy.sh production         # All-in-one Docker
 ```
 
 ---
