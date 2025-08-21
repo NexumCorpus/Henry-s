@@ -54,13 +54,13 @@ nano .env  # Add your secure passwords and settings
 # Backend: http://your-server:8000/docs
 ```
 
-### **Option 2: All-in-One Docker Deployment**
+### **Option 2: Complete Docker Compose Deployment**
 
 ```bash
-# Deploy everything to single server
-./deploy.sh production
-# Frontend: http://localhost:80
-# Backend: http://localhost:8000/docs
+# Deploy everything to single server (frontend + backend + database)
+./deploy-docker-complete.sh production
+# Complete system: http://localhost:80
+# API docs: http://localhost:8000/docs
 ```
 
 ### **Option 2: Development Setup**
@@ -87,10 +87,12 @@ docker-compose exec backend alembic upgrade head
 - 📖 **[Quick Start Guide](QUICK_START_GUIDE.md)** - Get up and running in 15 minutes
 - 🚀 **[Deployment Guide](DEPLOYMENT_GUIDE.md)** - Complete production deployment
 - 🌐 **[Vercel Complete Setup](VERCEL_COMPLETE_SETUP.md)** - 15-minute Vercel deployment ⭐
+- 🐳 **[Docker Compose Guide](DOCKER_COMPOSE_GUIDE.md)** - Complete single-server deployment
 - 🔧 **[Vercel Troubleshooting](VERCEL_TROUBLESHOOTING.md)** - Fix common Vercel issues
 - 🎬 **[Demo Script](DEMO_SCRIPT.md)** - Show the system to your team
 - ✅ **[Production Checklist](PRODUCTION_CHECKLIST.md)** - Ensure you're ready to go live
 - 📊 **[Deployment Comparison](DEPLOYMENT_COMPARISON.md)** - Choose the best option
+- ⚖️ **[Docker vs Vercel](DOCKER_VS_VERCEL_COMPARISON.md)** - Detailed comparison
 - 🔧 **[Frontend Implementation](frontend/INVENTORY_DASHBOARD_README.md)** - Technical details
 
 ## 📈 **What's Next? (Post-MVP Roadmap)**
@@ -129,8 +131,8 @@ cd henrys-smartstock-ai
 # ⭐ Recommended: 15-minute Vercel deployment
 ./deploy-vercel.sh production
 
-# Alternative: All-in-one Docker deployment  
-./deploy.sh production
+# Alternative: Complete Docker Compose deployment  
+./deploy-docker-complete.sh production
 ```
 
 **📖 Complete setup guide**: [VERCEL_COMPLETE_SETUP.md](VERCEL_COMPLETE_SETUP.md)
